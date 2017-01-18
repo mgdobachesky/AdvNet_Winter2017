@@ -8,8 +8,8 @@
 -debug:full
 -nostdlib
 -nologo
-"C:\Users\DobacheskyMichaelG\Desktop\SE406_Dobachesky\src\SE406_Dobachesky\obj\Debug\net461\dotnet-compile.assemblyinfo.cs"
--out:"C:\Users\DobacheskyMichaelG\Desktop\SE406_Dobachesky\src\SE406_Dobachesky\bin\Debug\net461\SE406_Dobachesky.exe"
+"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\obj\Debug\net461\dotnet-compile.assemblyinfo.cs"
+-out:"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\bin\Debug\net461\SE406_Dobachesky.exe"
 -r:"C:\Users\DobacheskyMichaelG\.nuget\packages\Microsoft.ApplicationInsights\2.1.0\lib\net46\Microsoft.ApplicationInsights.dll"
 -r:"C:\Users\DobacheskyMichaelG\.nuget\packages\Microsoft.ApplicationInsights.Agent.Intercept\1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll"
 -r:"C:\Users\DobacheskyMichaelG\.nuget\packages\Microsoft.ApplicationInsights.AspNetCore\1.0.0\lib\net451\Microsoft.ApplicationInsights.AspNetCore.dll"
@@ -171,7 +171,11 @@
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ServiceModel.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Numerics.dll"
 -r:"C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.Runtime.Serialization.dll"
--resource:"C:\Users\DobacheskyMichaelG\Desktop\SE406_Dobachesky\src\SE406_Dobachesky\obj\Debug\net461\SE406_Dobacheskydotnet-compile.deps.json",SE406_Dobachesky.deps.json
-"C:\Users\DobacheskyMichaelG\Desktop\SE406_Dobachesky\src\SE406_Dobachesky\Program.cs"
-"C:\Users\DobacheskyMichaelG\Desktop\SE406_Dobachesky\src\SE406_Dobachesky\Startup.cs"
-"C:\Users\DobacheskyMichaelG\Desktop\SE406_Dobachesky\src\SE406_Dobachesky\Controllers\HomeController.cs"
+-resource:"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\obj\Debug\net461\SE406_Dobacheskydotnet-compile.deps.json",SE406_Dobachesky.deps.json
+"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\Program.cs"
+"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\Startup.cs"
+"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\Controllers\BridgeController.cs"
+"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\Controllers\HomeController.cs"
+"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\Controllers\InspectionController.cs"
+"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\Controllers\InspectorController.cs"
+"C:\Users\DobacheskyMichaelG\Desktop\AdvNet_Winter2017\SE407_Dobachesky\src\SE406_Dobachesky\Controllers\MaintenanceController.cs"

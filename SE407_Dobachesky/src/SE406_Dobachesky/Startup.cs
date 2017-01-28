@@ -36,6 +36,15 @@ namespace SE406_Dobachesky
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
+            //// Add entity framework
+            //services.AddEntityFrameworkSqlServer()
+            //    .AddEntityFrameworkSqlServer()
+            //    .AddDbContext<SE407_demo.EmployeeDBContext>(options =>
+            //    {
+            //        options.UseSqlServer(
+            //            Configuration.GetConnectionString("MSSQLDB"));
+            //    });
+
             services.AddMvc();
         }
 

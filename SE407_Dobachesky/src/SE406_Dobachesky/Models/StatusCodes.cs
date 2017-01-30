@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace SE406_Dobachesky
 {
-    public class maintenance_actions
+    public class StatusCodes
     {
-        public int maint_action_id { get; set; }
-        public string maint_action_name { get; set; }
+        public int StatusId { get; set; }
+        public string StatusName { get; set; }
     }
 }

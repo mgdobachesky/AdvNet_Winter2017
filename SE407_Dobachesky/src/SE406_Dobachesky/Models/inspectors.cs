@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 
 namespace SE406_Dobachesky
 {
-    public class inspectors
+    public class Inspectors
     {
-        public int inspector_id { get; set; }
-        public string inspector_first { get; set; }
-        public string inspector_last { get; set; }
-        public string inspector_org { get; set; }
-        public DateTime inspector_cert_effective { get; set; }
-        public DateTime inspector_cert_expires { get; set; }
+        public int InspectorId { get; set; }
+        public string InspectorFirst { get; set; }
+        public string InspectorLast { get; set; }
+        public string InspectorOrg { get; set; }
+        public DateTime InspectorCertEffective { get; set; }
+        public DateTime InspectorCertExpires { get; set; }
     }
 }

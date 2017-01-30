@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace SE406_Dobachesky
 {
-    public class material_designs
+    public class MaterialDesigns
     {
-        public int material_design_id { get; set; }
-        public string material_design_type { get; set; }
+        public int MaterialDesignId { get; set; }
+        public string MaterialDesignType { get; set; }
     }
 }

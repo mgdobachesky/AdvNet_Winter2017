@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace SE406_Dobachesky
 {
-    public class status_codes
+    public class FunctionalClasses
     {
-        public int status_id { get; set; }
-        public string status_name { get; set; }
+        public int FunctionalClassId { get; set; }
+        public string FunctionalClassType { get; set; }
     }
 }

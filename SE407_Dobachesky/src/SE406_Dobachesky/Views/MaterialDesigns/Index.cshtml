@@ -1,0 +1,41 @@
+﻿@model SE406_Dobachesky.MaterialDesignsViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Index", "MaterialDesigns", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaterialDesigns.MaterialDesignType)
+                    @Html.TextBoxFor(Model => Model.NewMaterialDesigns.MaterialDesignType,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-md" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>List of Material Designs:</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Material Design Id</th>
+                        <th>Material Design Type</th>
+                    </tr>
+                    @foreach (var MaterialDesign in Model.MaterialDesignsList)
+                    {
+                        <tr>@MaterialDesign.MaterialDesignId</tr>
+                        <tr>@MaterialDesign.MaterialDesignType</tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

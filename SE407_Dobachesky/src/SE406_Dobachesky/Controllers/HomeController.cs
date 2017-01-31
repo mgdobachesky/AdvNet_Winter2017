@@ -15,14 +15,14 @@ namespace SE406_Dobachesky.Controllers
 
         public IActionResult About()
         {
-            ViewData["Message"] = "Rhode Island bridge department description page.";
+            ViewData["Message"] = "Rhode Island bridge department description page";
 
             return View();
         }
 
         public IActionResult Contact()
         {
-            ViewData["Message"] = "Rhode Island bridge department contact page.";
+            ViewData["Message"] = "Rhode Island bridge department contact page";
 
             return View();
         }

@@ -1,0 +1,41 @@
+﻿@model SE406_Dobachesky.FunctionalClassesViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Index", "FunctionalClasses", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewFunctionalClasses.FunctionalClassType)
+                    @Html.TextBoxFor(Model => Model.NewFunctionalClasses.FunctionalClassType,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-md" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>List of Functional Classes:</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Functional Class Id</th>
+                        <th>Functional Class Type</th>
+                    </tr>
+                    @foreach (var FunctionalClass in Model.FunctionalClassesList)
+                    {
+                        <tr>@FunctionalClass.FunctionalClassId</tr>
+                        <tr>@FunctionalClass.FunctionalClassType</tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

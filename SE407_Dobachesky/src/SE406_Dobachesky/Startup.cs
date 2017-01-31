@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 
 namespace SE406_Dobachesky
 {
@@ -36,14 +37,64 @@ namespace SE406_Dobachesky
             // Add framework services.
             services.AddApplicationInsightsTelemetry(Configuration);
 
-            //// Add entity framework
-            //services.AddEntityFrameworkSqlServer()
-            //    .AddEntityFrameworkSqlServer()
-            //    .AddDbContext<SE407_demo.EmployeeDBContext>(options =>
-            //    {
-            //        options.UseSqlServer(
-            //            Configuration.GetConnectionString("MSSQLDB"));
-            //    });
+            // Add entity framework for each DB Context
+            services.AddEntityFrameworkSqlServer()
+                .AddEntityFrameworkSqlServer()
+                .AddDbContext<SE406_Dobachesky.BridgesDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.ConstructionDesignsDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.CountiesDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.FunctionalClassesDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.InspectionCodesDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.InspectionsDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.InspectorsDBContext>(options =>
+                 {
+                     options.UseSqlServer(
+                         Configuration.GetConnectionString("MSSQLDB"));
+                 })
+                .AddDbContext<SE406_Dobachesky.MaintenanceActionsDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.MaintenanceRecordsDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.MaterialDesignsDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                })
+                .AddDbContext<SE406_Dobachesky.StatusCodesDBContext>(options =>
+                {
+                    options.UseSqlServer(
+                        Configuration.GetConnectionString("MSSQLDB"));
+                });
 
             services.AddMvc();
         }

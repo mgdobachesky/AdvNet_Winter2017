@@ -1,0 +1,104 @@
+﻿@model SE406_Dobachesky.MaintenanceRecordsViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Index", "MaintenanceRecords", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.MaintenanceActionId)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.MaintenanceActionId,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.InspectorId)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.InspectorId,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.MaintenanceProjectedStart)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.MaintenanceProjectedStart,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.MaintenanceProjectedEnd)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.MaintenanceProjectedEnd,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.MaintenanceActualStart)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.MaintenanceActualStart,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.MaintenanceActualEnd)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.MaintenanceActualEnd,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.MaintenanceProjectedCost)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.MaintenanceProjectedCost,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.MaintenanceActualCost)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.MaintenanceActualCost,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.MaintenanceNotes)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.MaintenanceNotes,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaintenanceRecords.InspectorNotes)
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecords.InspectorNotes,
+                        new { @class = "form-control" })
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-md" />
+                </div>
+            }
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>List of Maintenance Records:</h2>
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <tr>
+                        <th>Maintenance Id</th>
+                        <th>Maintenance Action Id</th>
+                        <th>Inspector Id</th>
+                        <th>Maintenance Projected Start</th>
+                        <th>Maintenance Projected End</th>
+                        <th>Maintenance Actual Start</th>
+                        <th>Maintenance Actual End</th>
+                        <th>Maintenance Projected Cost</th>
+                        <th>Maintenance Actual Cost</th>
+                        <th>Maintenance Notes</th>
+                        <th>Inspector Notes</th>
+                    </tr>
+                    @foreach (var MaintenanceRecord in Model.MaintenanceRecordsList)
+                    {
+                        <tr>@MaintenanceRecord.MaintenanceId</tr>
+                        <tr>@MaintenanceRecord.MaintenanceActionId</tr>
+                        <tr>@MaintenanceRecord.InspectorId</tr>
+                        <tr>@MaintenanceRecord.MaintenanceProjectedStart</tr>
+                        <tr>@MaintenanceRecord.MaintenanceProjectedEnd</tr>
+                        <tr>@MaintenanceRecord.MaintenanceActualStart</tr>
+                        <tr>@MaintenanceRecord.MaintenanceActualEnd</tr>
+                        <tr>@MaintenanceRecord.MaintenanceProjectedCost</tr>
+                        <tr>@MaintenanceRecord.MaintenanceActualCost</tr>
+                        <tr>@MaintenanceRecord.MaintenanceNotes</tr>
+                        <tr>@MaintenanceRecord.InspectorNotes</tr>
+                    }
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

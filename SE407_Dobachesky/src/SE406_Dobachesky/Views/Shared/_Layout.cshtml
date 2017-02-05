@@ -34,17 +34,32 @@
                     @*<li><a asp-area="" asp-controller="Home" asp-action="Index">Home</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-area="" asp-controller="Home" asp-action="Contact">Contact</a></li>*@
-                    <li><a asp-area="" asp-controller="Bridges" asp-action="Index">Bridges</a></li>
-                    <li><a asp-area="" asp-controller="ConstructionDesigns" asp-action="Index">Construction Designs</a></li>
-                    <li><a asp-area="" asp-controller="Counties" asp-action="Index">Counties</a></li>
-                    <li><a asp-area="" asp-controller="FunctionalClasses" asp-action="Index">Functional Classes</a></li>
-                    <li><a asp-area="" asp-controller="InspectionCodes" asp-action="Index">Inspection Codes</a></li>
-                    <li><a asp-area="" asp-controller="Inspections" asp-action="Index">Inspections</a></li>
-                    <li><a asp-area="" asp-controller="Inspectors" asp-action="Index">Inspectors</a></li>
-                    <li><a asp-area="" asp-controller="MaintenanceActions" asp-action="Index">Maintenance Actions</a></li>
-                    <li><a asp-area="" asp-controller="MaintenanceRecords" asp-action="Index">Maintenance Records</a></li>
-                    <li><a asp-area="" asp-controller="MaterialDesigns" asp-action="Index">Material Designs</a></li>
-                    <li><a asp-area="" asp-controller="StatusCodes" asp-action="Index">Status Codes</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bridges <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="Bridges" asp-action="Index">Bridges</a></li>
+                            <li><a asp-area="" asp-controller="ConstructionDesigns" asp-action="Index">Construction Designs</a></li>
+                            <li><a asp-area="" asp-controller="Counties" asp-action="Index">Counties</a></li>
+                            <li><a asp-area="" asp-controller="FunctionalClasses" asp-action="Index">Functional Classes</a></li>
+                            <li><a asp-area="" asp-controller="MaterialDesigns" asp-action="Index">Material Designs</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Inspections <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="InspectionCodes" asp-action="Index">Inspection Codes</a></li>
+                            <li><a asp-area="" asp-controller="Inspections" asp-action="Index">Inspections</a></li>
+                            <li><a asp-area="" asp-controller="Inspectors" asp-action="Index">Inspectors</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Maintenance <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a asp-area="" asp-controller="MaintenanceActions" asp-action="Index">Maintenance Actions</a></li>
+                            <li><a asp-area="" asp-controller="MaintenanceRecords" asp-action="Index">Maintenance Records</a></li>
+                            <li><a asp-area="" asp-controller="StatusCodes" asp-action="Index">Status Codes</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </div>

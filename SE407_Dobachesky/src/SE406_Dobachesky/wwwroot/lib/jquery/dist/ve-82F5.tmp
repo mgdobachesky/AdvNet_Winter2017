@@ -8052,7 +8052,7 @@ function addToPrefiltersOrTransports( structure ) {
 	};
 }
 
-// Base Inspection function for prefilters and transports
+// Base inspection function for prefilters and transports
 function inspectPrefiltersOrTransports( structure, options, originalOptions, jqXHR ) {
 
 	var inspected = {},
@@ -8398,7 +8398,7 @@ jQuery.extend( {
 			completeDeferred = jQuery.Callbacks( "once memory" ),
 
 			// Status-dependent callbacks
-			StatusCode = s.StatusCode || {},
+			statusCode = s.statusCode || {},
 
 			// Headers (they are sent all at once)
 			requestHeaders = {},
@@ -8453,14 +8453,14 @@ jQuery.extend( {
 				},
 
 				// Status-dependent callbacks
-				StatusCode: function( map ) {
+				statusCode: function( map ) {
 					var code;
 					if ( map ) {
 						if ( state < 2 ) {
 							for ( code in map ) {
 
 								// Lazy-add the new callback in a way that preserves old ones
-								StatusCode[ code ] = [ StatusCode[ code ], map[ code ] ];
+								statusCode[ code ] = [ statusCode[ code ], map[ code ] ];
 							}
 						} else {
 
@@ -8757,8 +8757,8 @@ jQuery.extend( {
 			}
 
 			// Status-dependent callbacks
-			jqXHR.StatusCode( StatusCode );
-			StatusCode = undefined;
+			jqXHR.statusCode( statusCode );
+			statusCode = undefined;
 
 			if ( fireGlobals ) {
 				globalEventContext.trigger( isSuccess ? "ajaxSuccess" : "ajaxError",

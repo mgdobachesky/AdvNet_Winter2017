@@ -27,14 +27,16 @@ namespace SE407_Dobachesky.Controllers
         [HttpPost]
         public IActionResult Index(FunctionalClassViewModel FunctionalClassVm)
         {
-            using (var db = new FunctionalClassDBContext())
+            if (ModelState.IsValid)
             {
-                db.FunctionalClasses.Add(FunctionalClassVm.NewFunctionalClass);
-                db.SaveChanges();
-
-                // Redirect to index GET method
-                return RedirectToAction("Index");
+                using (var db = new FunctionalClassDBContext())
+                {
+                    db.FunctionalClasses.Add(FunctionalClassVm.NewFunctionalClass);
+                    db.SaveChanges();
+                }
             }
+            // Redirect to index GET method
+            return RedirectToAction("Index");
         }
 
         // Error page

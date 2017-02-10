@@ -11,8 +11,8 @@
             {
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaterialDesign.MaterialDesignType)
-                    @Html.TextBoxFor(Model => Model.NewMaterialDesign.MaterialDesignType,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaterialDesign.MaterialDesignType, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaterialDesign.MaterialDesignType" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Submit" class="btn btn-md" />

@@ -27,14 +27,16 @@ namespace SE407_Dobachesky.Controllers
         [HttpPost]
         public IActionResult Index(MaterialDesignViewModel MaterialDesignVm)
         {
-            using (var db = new MaterialDesignDBContext())
+            if (ModelState.IsValid)
             {
-                db.MaterialDesigns.Add(MaterialDesignVm.NewMaterialDesign);
-                db.SaveChanges();
-
-                // Redirect to index GET method
-                return RedirectToAction("Index");
+                using (var db = new MaterialDesignDBContext())
+                {
+                    db.MaterialDesigns.Add(MaterialDesignVm.NewMaterialDesign);
+                    db.SaveChanges();
+                }
             }
+            // Redirect to index GET method
+            return RedirectToAction("Index");
         }
 
         // Error page

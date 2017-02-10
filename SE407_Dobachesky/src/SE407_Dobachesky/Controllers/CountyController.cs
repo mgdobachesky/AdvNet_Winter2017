@@ -27,14 +27,16 @@ namespace SE407_Dobachesky.Controllers
         [HttpPost]
         public IActionResult Index(CountyViewModel CountyVm)
         {
-            using (var db = new CountyDBContext())
+            if (ModelState.IsValid)
             {
-                db.Counties.Add(CountyVm.NewCounty);
-                db.SaveChanges();
-
-                // Redirect to index GET method
-                return RedirectToAction("Index");
+                using (var db = new CountyDBContext())
+                {
+                    db.Counties.Add(CountyVm.NewCounty);
+                    db.SaveChanges();
+                }
             }
+            // Redirect to index GET method
+            return RedirectToAction("Index");
         }
 
         // Error page

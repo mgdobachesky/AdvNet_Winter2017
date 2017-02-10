@@ -27,14 +27,16 @@ namespace SE407_Dobachesky.Controllers
         [HttpPost]
         public IActionResult Index(ConstructionDesignViewModel ConstructionDesignVm)
         {
-            using (var db = new ConstructionDesignDBContext())
+            if (ModelState.IsValid)
             {
-                db.ConstructionDesigns.Add(ConstructionDesignVm.NewConstructionDesign);
-                db.SaveChanges();
-
-                // Redirect to index GET method
-                return RedirectToAction("Index");
+                using (var db = new ConstructionDesignDBContext())
+                {
+                    db.ConstructionDesigns.Add(ConstructionDesignVm.NewConstructionDesign);
+                    db.SaveChanges();
+                }
             }
+            // Redirect to index GET method
+            return RedirectToAction("Index");
         }
 
         // Error page

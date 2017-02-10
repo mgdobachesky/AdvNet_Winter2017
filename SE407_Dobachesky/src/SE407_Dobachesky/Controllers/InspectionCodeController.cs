@@ -27,14 +27,16 @@ namespace SE407_Dobachesky.Controllers
         [HttpPost]
         public IActionResult Index(InspectionCodeViewModel InspectionCodeVm)
         {
-            using (var db = new InspectionCodeDBContext())
+            if (ModelState.IsValid)
             {
-                db.InspectionCodes.Add(InspectionCodeVm.NewInspectionCode);
-                db.SaveChanges();
-
-                // Redirect to index GET method
-                return RedirectToAction("Index");
+                using (var db = new InspectionCodeDBContext())
+                {
+                    db.InspectionCodes.Add(InspectionCodeVm.NewInspectionCode);
+                    db.SaveChanges();
+                }
             }
+            // Redirect to index GET method
+            return RedirectToAction("Index");
         }
 
         // Error page

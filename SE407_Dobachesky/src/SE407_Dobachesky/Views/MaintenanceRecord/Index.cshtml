@@ -11,53 +11,53 @@
             {
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.MaintenanceActionId)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceActionId,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceActionId, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.MaintenanceActionId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.InspectorId)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.InspectorId,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.InspectorId, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.InspectorId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedStart)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedStart,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedStart, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.MaintenanceProjectedStart" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedEnd)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedEnd,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedEnd, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.MaintenanceProjectedEnd" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.MaintenanceActualStart)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceActualStart,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceActualStart, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.MaintenanceActualStart" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.MaintenanceActualEnd)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceActualEnd,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceActualEnd, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.MaintenanceActualEnd" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedCost)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedCost,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceProjectedCost, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.MaintenanceProjectedCost" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.MaintenanceActualCost)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceActualCost,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceActualCost, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.MaintenanceActualCost" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.MaintenanceNotes)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceNotes,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.MaintenanceNotes, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.MaintenanceNotes" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewMaintenanceRecord.InspectorNotes)
-                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.InspectorNotes,
-                        new { @class = "form-control" })
+                    @Html.TextBoxFor(Model => Model.NewMaintenanceRecord.InspectorNotes, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaintenanceRecord.InspectorNotes" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Submit" class="btn btn-md" />

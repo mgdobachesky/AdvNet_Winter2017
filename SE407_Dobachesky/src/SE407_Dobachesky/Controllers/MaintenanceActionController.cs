@@ -27,14 +27,16 @@ namespace SE407_Dobachesky.Controllers
         [HttpPost]
         public IActionResult Index(MaintenanceActionViewModel MaintenanceActionVm)
         {
-            using (var db = new MaintenanceActionDBContext())
+            if (ModelState.IsValid)
             {
-                db.MaintenanceActions.Add(MaintenanceActionVm.NewMaintenanceAction);
-                db.SaveChanges();
-
-                // Redirect to index GET method
-                return RedirectToAction("Index");
+                using (var db = new MaintenanceActionDBContext())
+                {
+                    db.MaintenanceActions.Add(MaintenanceActionVm.NewMaintenanceAction);
+                    db.SaveChanges();
+                }
             }
+            // Redirect to index GET method
+            return RedirectToAction("Index");
         }
 
         // Error page

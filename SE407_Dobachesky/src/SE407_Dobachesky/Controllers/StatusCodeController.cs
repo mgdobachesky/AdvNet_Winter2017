@@ -27,14 +27,16 @@ namespace SE407_Dobachesky.Controllers
         [HttpPost]
         public IActionResult Index(StatusCodeViewModel StatusCodeVm)
         {
-            using (var db = new StatusCodeDBContext())
+            if (ModelState.IsValid)
             {
-                db.StatusCodes.Add(StatusCodeVm.NewStatusCode);
-                db.SaveChanges();
-
-                // Redirect to index GET method
-                return RedirectToAction("Index");
+                using (var db = new StatusCodeDBContext())
+                {
+                    db.StatusCodes.Add(StatusCodeVm.NewStatusCode);
+                    db.SaveChanges();
+                }
             }
+            // Redirect to index GET method
+            return RedirectToAction("Index");
         }
 
         // Error page

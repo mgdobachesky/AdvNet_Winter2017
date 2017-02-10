@@ -27,14 +27,16 @@ namespace SE407_Dobachesky.Controllers
         [HttpPost]
         public IActionResult Index(BridgeViewModel BridgeVm)
         {
-            using (var db = new BridgeDBContext())
+            if (ModelState.IsValid)
             {
-                db.Bridges.Add(BridgeVm.NewBridge);
-                db.SaveChanges();
-
-                // Redirect to index GET method
-                return RedirectToAction("Index");
+                using (var db = new BridgeDBContext())
+                {
+                    db.Bridges.Add(BridgeVm.NewBridge);
+                    db.SaveChanges();
+                }
             }
+            // Redirect to index GET method
+            return RedirectToAction("Index");
         }
 
         // Error page

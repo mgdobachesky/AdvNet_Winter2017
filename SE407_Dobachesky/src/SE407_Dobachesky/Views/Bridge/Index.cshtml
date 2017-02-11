@@ -11,27 +11,37 @@
             {
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewBridge.MaterialDesignId)
-                    @Html.TextBoxFor(Model => Model.NewBridge.MaterialDesignId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewBridge.MaterialDesignId" asp-items="@Model.MaterialDesigns" class="form-control">
+                        <option value="" selected>Choose Material Design</option>
+                    </select>
                     <span asp-validation-for="@Model.NewBridge.MaterialDesignId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewBridge.ConstructionDesignId)
-                    @Html.TextBoxFor(Model => Model.NewBridge.ConstructionDesignId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewBridge.ConstructionDesignId" asp-items="@Model.ConstructionDesigns" class="form-control">
+                        <option value="" selected>Choose Construction Design</option>
+                    </select>
                     <span asp-validation-for="@Model.NewBridge.ConstructionDesignId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewBridge.FunctionalClassId)
-                    @Html.TextBoxFor(Model => Model.NewBridge.FunctionalClassId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewBridge.FunctionalClassId" asp-items="@Model.FunctionalClasses" class="form-control">
+                        <option value="" selected>Choose Functional Class</option>
+                    </select>
                     <span asp-validation-for="@Model.NewBridge.FunctionalClassId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewBridge.StatusId)
-                    @Html.TextBoxFor(Model => Model.NewBridge.StatusId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewBridge.StatusId" asp-items="@Model.Statuses" class="form-control">
+                        <option value="" selected>Choose Status</option>
+                    </select>
                     <span asp-validation-for="@Model.NewBridge.StatusId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewBridge.CountyId)
-                    @Html.TextBoxFor(Model => Model.NewBridge.CountyId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewBridge.CountyId" asp-items="@Model.Counties" class="form-control">
+                        <option value="" selected>Choose County</option>
+                    </select>
                     <span asp-validation-for="@Model.NewBridge.CountyId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -97,44 +107,50 @@
                 <table class="table table-striped table-responsive">
                     <thead>
                         <tr>
-                            <th>Bridge Id</th>
-                            <th>Material Design Id</th>
-                            <th>Construction Design Id</th>
-                            <th>Functional Class Id</th>
-                            <th>Status Id</th>
-                            <th>County Id</th>
+                            <th>Material Design</th>
+                            <th>Construction Design</th>
+                            <th>Functional Class</th>
+                            <th>Status</th>
+                            <th>County</th>
                             <th>Nbi Number</th>
-                            <th>Rating</th>
-                            <th>Route Number</th>
-                            <th>City</th>
-                            <th>Intersecting Feature</th>
-                            <th>Carried Feature</th>
-                            <th>Location</th>
-                            <th>Built</th>
-                            <th>Reconstructed</th>
-                            <th>Total Length</th>
                         </tr>
                     </thead>
                     <tbody>
                         @foreach (var Bridge in Model.BridgesList)
                         {
                             <tr>
-                                <td>@Bridge.BridgeId</td>
-                                <td>@Bridge.MaterialDesignId</td>
-                                <td>@Bridge.ConstructionDesignId</td>
-                                <td>@Bridge.FunctionalClassId</td>
-                                <td>@Bridge.StatusId</td>
-                                <td>@Bridge.CountyId</td>
+                                <td>
+                                    @if (Bridge.MaterialDesignId != null)
+                                    {
+                                        @Model.MaterialDesigns.Where(item => item.Value == Bridge.MaterialDesignId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
+                                <td>
+                                    @if (Bridge.ConstructionDesignId != null)
+                                    {
+                                        @Model.ConstructionDesigns.Where(item => item.Value == Bridge.ConstructionDesignId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
+                                <td>
+                                    @if (Bridge.FunctionalClassId != null)
+                                    {
+                                        @Model.FunctionalClasses.Where(item => item.Value == Bridge.FunctionalClassId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
+                                <td>
+                                    @if (Bridge.StatusId != null)
+                                    {
+                                        @Model.Statuses.Where(item => item.Value == Bridge.StatusId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
+                                <td>
+                                    @if (Bridge.CountyId != null)
+                                    {
+                                        @Model.Counties.Where(item => item.Value == Bridge.CountyId.ToString()).FirstOrDefault().Text;
+
+                                    }
+                                </td>
                                 <td>@Bridge.NbiNumber</td>
-                                <td>@Bridge.Rating</td>
-                                <td>@Bridge.RouteNumber</td>
-                                <td>@Bridge.City</td>
-                                <td>@Bridge.IntersectingFeature</td>
-                                <td>@Bridge.CarriedFeature</td>
-                                <td>@Bridge.Location</td>
-                                <td>@Bridge.Built</td>
-                                <td>@Bridge.Reconstructed</td>
-                                <td>@Bridge.TotalLength</td>
                             </tr>
                         }
                     </tbody>

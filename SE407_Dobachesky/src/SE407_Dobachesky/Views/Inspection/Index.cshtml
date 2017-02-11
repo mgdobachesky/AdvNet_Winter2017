@@ -11,12 +11,16 @@
             {
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewInspection.BridgeId)
-                    @Html.TextBoxFor(Model => Model.NewInspection.BridgeId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewInspection.BridgeId" asp-items="@Model.Bridges" class="form-control">
+                        <option value="" selected>Choose Bridge</option>
+                    </select>
                     <span asp-validation-for="@Model.NewInspection.BridgeId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewInspection.InspectorId)
-                    @Html.TextBoxFor(Model => Model.NewInspection.InspectorId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewInspection.InspectorId" asp-items="@Model.Inspectors" class="form-control">
+                        <option value="" selected>Choose Inspector</option>
+                    </select>
                     <span asp-validation-for="@Model.NewInspection.InspectionId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -26,17 +30,23 @@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewInspection.DeckInspectionCodeId)
-                    @Html.TextBoxFor(Model => Model.NewInspection.DeckInspectionCodeId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewInspection.DeckInspectionCodeId" asp-items="@Model.DeckInspectionCodes" class="form-control">
+                        <option value="" selected>Choose Deck Inspection Code</option>
+                    </select>
                     <span asp-validation-for="@Model.NewInspection.DeckInspectionCodeId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewInspection.SuperstructureInspectionCodeId)
-                    @Html.TextBoxFor(Model => Model.NewInspection.SuperstructureInspectionCodeId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewInspection.SuperstructureInspectionCodeId" asp-items="@Model.SuperstructureInspectionCodes" class="form-control">
+                        <option value="" selected>Choose Superstructure Code</option>
+                    </select>
                     <span asp-validation-for="@Model.NewInspection.SuperstructureInspectionCodeId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(Model => Model.NewInspection.SubstructureInspectionCodeId)
-                    @Html.TextBoxFor(Model => Model.NewInspection.SubstructureInspectionCodeId, new { @class = "form-control" })
+                    <select asp-for="@Model.NewInspection.SubstructureInspectionCodeId" asp-items="@Model.SubstructureInspectionCodes" class="form-control">
+                        <option value="" selected>Choose Substructure Code</option>
+                    </select>
                     <span asp-validation-for="@Model.NewInspection.SubstructureInspectionCodeId" class="text-danger"></span>
                 </div>
                 <div class="form-group">
@@ -57,13 +67,11 @@
                 <table class="table table-striped table-responsive">
                     <thead>
                         <tr>
-                            <th>Inspection Id</th>
-                            <th>Bridge Id</th>
-                            <th>Inspector Id</th>
-                            <th>Inspection Date</th>
-                            <th>Deck Inspection Code Id</th>
-                            <th>Super Structure Inspection Code Id</th>
-                            <th>Sub Structure Inspection Code Id</th>
+                            <th>Bridge</th>
+                            <th>Inspector</th>
+                            <th>Deck Inspection Code</th>
+                            <th>Super Structure Inspection Code</th>
+                            <th>Sub Structure Inspection Code</th>
                             <th>Inspection Notes</th>
                         </tr>
                     </thead>
@@ -71,13 +79,36 @@
                         @foreach (var Inspection in Model.InspectionsList)
                         {
                             <tr>
-                                <td>@Inspection.InspectionId</td>
-                                <td>@Inspection.BridgeId</td>
-                                <td>@Inspection.InspectorId</td>
-                                <td>@Inspection.InspectionDate</td>
-                                <td>@Inspection.DeckInspectionCodeId</td>
-                                <td>@Inspection.SuperstructureInspectionCodeId</td>
-                                <td>@Inspection.SubstructureInspectionCodeId</td>
+                                <td>
+                                    @if (Inspection.BridgeId!= null)
+                                    {
+                                        @Model.Bridges.Where(item => item.Value == Inspection.BridgeId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
+                                <td>
+                                    @if (Inspection.InspectorId != null)
+                                    {
+                                        @Model.Inspectors.Where(item => item.Value == Inspection.InspectorId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
+                                <td>
+                                    @if (Inspection.DeckInspectionCodeId != null)
+                                    {
+                                        @Model.DeckInspectionCodes.Where(item => item.Value == Inspection.DeckInspectionCodeId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
+                                <td>
+                                    @if (Inspection.SuperstructureInspectionCodeId != null)
+                                    {
+                                        @Model.SuperstructureInspectionCodes.Where(item => item.Value == Inspection.SuperstructureInspectionCodeId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
+                                <td>
+                                    @if (Inspection.SubstructureInspectionCodeId != null)
+                                    {
+                                        @Model.SubstructureInspectionCodes.Where(item => item.Value == Inspection.SubstructureInspectionCodeId.ToString()).FirstOrDefault().Text;
+                                    }
+                                </td>
                                 <td>@Inspection.InspectionNotes</td>
                             </tr>
                         }

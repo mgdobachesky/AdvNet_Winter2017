@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -36,6 +37,34 @@ namespace SE407_Dobachesky.Controllers
                 }
             }
             // Redirect to index GET method
+            return RedirectToAction("Index");
+        }
+
+        // Get action for edit page
+        public IActionResult Edit(Guid id)
+        {
+            FunctionalClassViewModel ViewModel = new FunctionalClassViewModel();
+            using (FunctionalClassDBContext db = new FunctionalClassDBContext())
+            {
+                ViewModel.NewFunctionalClass = db.FunctionalClasses.Where(item => item.FunctionalClassId == id).SingleOrDefault();
+                return View(ViewModel);
+            }
+        }
+
+        // Post action for edit page
+        [HttpPost]
+        public IActionResult Edit(FunctionalClassViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                using (FunctionalClassDBContext db = new FunctionalClassDBContext())
+                {
+                    FunctionalClass item = obj.NewFunctionalClass;
+                    item.FunctionalClassId = Guid.Parse(RouteData.Values["id"].ToString());
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
             return RedirectToAction("Index");
         }
 

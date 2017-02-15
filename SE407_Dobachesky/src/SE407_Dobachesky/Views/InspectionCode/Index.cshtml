@@ -35,6 +35,7 @@
                             <th>Inspection Code Id</th>
                             <th>Inspection Code Name</th>
                             <th>Inspection Code Description</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -44,6 +45,7 @@
                                 <td>@InspectionCode.InspectionCodeId</td>
                                 <td>@InspectionCode.InspectionCodeName</td>
                                 <td>@InspectionCode.InspectionCodeDesc</td>
+                                <td><a asp-action="Edit" asp-route-id="@InspectionCode.InspectionCodeId">Edit</a></td>
                             </tr>
                         }
                     </tbody>

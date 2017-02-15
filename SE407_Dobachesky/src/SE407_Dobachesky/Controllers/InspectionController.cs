@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -42,6 +43,39 @@ namespace SE407_Dobachesky.Controllers
                 }
             }
             // Redirect to index GET method
+            return RedirectToAction("Index");
+        }
+
+        // Get action for edit page
+        public IActionResult Edit(Guid id)
+        {
+            InspectionViewModel ViewModel = new InspectionViewModel();
+            using (InspectionDBContext db = new InspectionDBContext())
+            {
+                ViewModel.NewInspection = db.Inspections.Where(item => item.InspectionId == id).SingleOrDefault();
+                ViewModel.Bridges = GetBridgesDDL();
+                ViewModel.Inspectors = GetInspectorsDDL();
+                ViewModel.DeckInspectionCodes = GetDeckInspectionCodesDDL();
+                ViewModel.SuperstructureInspectionCodes = GetSuperstructureInspectionCodesDDL();
+                ViewModel.SubstructureInspectionCodes = GetSubstructureInspectionCodesDDL();
+                return View(ViewModel);
+            }
+        }
+
+        // Post action for edit page
+        [HttpPost]
+        public IActionResult Edit(InspectionViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                using (InspectionDBContext db = new InspectionDBContext())
+                {
+                    Inspection item = obj.NewInspection;
+                    item.InspectionId = Guid.Parse(RouteData.Values["id"].ToString());
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
             return RedirectToAction("Index");
         }
 

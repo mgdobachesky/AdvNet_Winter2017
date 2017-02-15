@@ -29,6 +29,7 @@
                         <tr>
                             <th>Status Id</th>
                             <th>Status Name</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>@StatusCode.StatusCodeId</td>
                                 <td>@StatusCode.StatusName</td>
+                                <td><a asp-action="Edit" asp-route-id="@StatusCode.StatusCodeId">Edit</a></td>
                             </tr>
                         }
                     </tbody>

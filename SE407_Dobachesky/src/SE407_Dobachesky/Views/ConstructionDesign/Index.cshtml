@@ -29,6 +29,7 @@
                         <tr>
                             <th>Construction Design Id</th>
                             <th>Construction Design Type</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>@ConstructionDesign.ConstructionDesignId</td>
                                 <td>@ConstructionDesign.ConstructionDesignType</td>
+                                <td><a asp-action="Edit" asp-route-id="@ConstructionDesign.ConstructionDesignId">Edit</a></td>
                             </tr>
                         }
                     </tbody>

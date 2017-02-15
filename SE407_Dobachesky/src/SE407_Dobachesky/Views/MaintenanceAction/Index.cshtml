@@ -29,6 +29,7 @@
                         <tr>
                             <th>MaintenanceAction Id</th>
                             <th>MaintenanceAction Name</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>@MaintenanceAction.MaintenanceActionId</td>
                                 <td>@MaintenanceAction.MaintenanceActionName</td>
+                                <td><a asp-action="Edit" asp-route-id="@MaintenanceAction.MaintenanceActionId">Edit</a></td>
                             </tr>
                         }
                     </tbody>

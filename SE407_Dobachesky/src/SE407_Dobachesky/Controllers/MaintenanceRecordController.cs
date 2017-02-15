@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -39,6 +40,36 @@ namespace SE407_Dobachesky.Controllers
                 }
             }
             // Redirect to index GET method
+            return RedirectToAction("Index");
+        }
+
+        // Get action for edit page
+        public IActionResult Edit(Guid id)
+        {
+            MaintenanceRecordViewModel ViewModel = new MaintenanceRecordViewModel();
+            using (MaintenanceRecordDBContext db = new MaintenanceRecordDBContext())
+            {
+                ViewModel.NewMaintenanceRecord = db.MaintenanceRecords.Where(item => item.MaintenanceRecordId == id).SingleOrDefault();
+                ViewModel.MaintenanceActions = GetMaintenanceActionsDDL();
+                ViewModel.Inspectors = GetInspectorsDDL();
+                return View(ViewModel);
+            }
+        }
+
+        // Post action for edit page
+        [HttpPost]
+        public IActionResult Edit(MaintenanceRecordViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                using (MaintenanceRecordDBContext db = new MaintenanceRecordDBContext())
+                {
+                    MaintenanceRecord item = obj.NewMaintenanceRecord;
+                    item.MaintenanceRecordId = Guid.Parse(RouteData.Values["id"].ToString());
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
             return RedirectToAction("Index");
         }
 

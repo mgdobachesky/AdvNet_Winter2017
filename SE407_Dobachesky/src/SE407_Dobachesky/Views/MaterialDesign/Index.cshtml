@@ -29,6 +29,7 @@
                         <tr>
                             <th>Material Design Id</th>
                             <th>Material Design Type</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>@MaterialDesign.MaterialDesignId</td>
                                 <td>@MaterialDesign.MaterialDesignType</td>
+                                <td><a asp-action="Edit" asp-route-id="@MaterialDesign.MaterialDesignId">Edit</a></td>
                             </tr>
                         }
                     </tbody>

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using SE407_Dobachesky;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -43,6 +44,39 @@ namespace SE407_Dobachesky.Controllers
                 }
             }
             // Redirect to index GET method
+            return RedirectToAction("Index");
+        }
+
+        // Get action for edit page
+        public IActionResult Edit(Guid id)
+        {
+            BridgeViewModel ViewModel = new BridgeViewModel();
+            using (BridgeDBContext db = new BridgeDBContext())
+            {
+                ViewModel.NewBridge = db.Bridges.Where(item => item.BridgeId == id).SingleOrDefault();
+                ViewModel.ConstructionDesigns = GetConstructionDesignsDDL();
+                ViewModel.Counties = GetCountiesDDL();
+                ViewModel.FunctionalClasses = GetFunctionalClassesDDL();
+                ViewModel.MaterialDesigns = GetMaterialDesignsDDL();
+                ViewModel.Statuses = GetStatusesDDL();
+                return View(ViewModel);
+            }
+        }
+
+        // Post action for edit page
+        [HttpPost]
+        public IActionResult Edit(BridgeViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                using (BridgeDBContext db = new BridgeDBContext())
+                {
+                    Bridge item = obj.NewBridge;
+                    item.BridgeId = Guid.Parse(RouteData.Values["id"].ToString());
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
             return RedirectToAction("Index");
         }
 

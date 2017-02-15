@@ -1,0 +1,24 @@
+﻿@model SE407_Dobachesky.MaterialDesignViewModel
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            @using (Html.BeginForm("Edit", "MaterialDesign", FormMethod.Post))
+            {
+                <div class="form-group">
+                    @Html.LabelFor(Model => Model.NewMaterialDesign.MaterialDesignType)
+                    @Html.TextBoxFor(Model => Model.NewMaterialDesign.MaterialDesignType, new { @class = "form-control" })
+                    <span asp-validation-for="@Model.NewMaterialDesign.MaterialDesignType" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Submit" class="btn btn-md" />
+                    <div class="btn btn-md">@Html.ActionLink("Back to Material Designs", "Index")</div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

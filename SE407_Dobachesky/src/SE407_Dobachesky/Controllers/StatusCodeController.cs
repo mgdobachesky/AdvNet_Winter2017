@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -38,6 +39,35 @@ namespace SE407_Dobachesky.Controllers
             // Redirect to index GET method
             return RedirectToAction("Index");
         }
+
+        // Get action for edit page
+        public IActionResult Edit(Guid id)
+        {
+            StatusCodeViewModel ViewModel = new StatusCodeViewModel();
+            using (StatusCodeDBContext db = new StatusCodeDBContext())
+            {
+                ViewModel.NewStatusCode = db.StatusCodes.Where(item => item.StatusCodeId == id).SingleOrDefault();
+                return View(ViewModel);
+            }
+        }
+
+        // Post action for edit page
+        [HttpPost]
+        public IActionResult Edit(StatusCodeViewModel obj)
+        {
+            if (ModelState.IsValid)
+            {
+                using (StatusCodeDBContext db = new StatusCodeDBContext())
+                {
+                    StatusCode item = obj.NewStatusCode;
+                    item.StatusCodeId = Guid.Parse(RouteData.Values["id"].ToString());
+                    db.Entry(item).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            return RedirectToAction("Index");
+        }
+
 
         // Error page
         public IActionResult Error()

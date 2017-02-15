@@ -29,6 +29,7 @@
                         <tr>
                             <th>County Id</th>
                             <th>County Name</th>
+                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td>@County.CountyId</td>
                                 <td>@County.CountyName</td>
+                                <td><a asp-action="Edit" asp-route-id="@County.CountyId">Edit</a></td>
                             </tr>
                         }
                     </tbody>

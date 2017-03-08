@@ -45,6 +45,8 @@ namespace SE407_Dobachesky
                     options.UseSqlServer(Configuration.GetConnectionString("MSSQLDB"));
                 });
 
+            // Add framework services
+            services.AddSession();
             services.AddMvc();
         }
 
@@ -69,6 +71,8 @@ namespace SE407_Dobachesky
             app.UseApplicationInsightsExceptionTelemetry();
 
             app.UseStaticFiles();
+
+            app.UseSession();
 
             app.UseMvc(routes =>
             {

@@ -40,6 +40,41 @@ namespace SE407_Dobachesky.Controllers
             return RedirectToAction("Index");
         }
 
+        // Delete action
+        [HttpGet]
+        public IActionResult Delete(Guid id)
+        {
+            MaintenanceActionViewModel MaintenanceActionVm = new MaintenanceActionViewModel();
+            using (MaintenanceActionDBContext db = new MaintenanceActionDBContext())
+            {
+                using (var dbCheck = new MaintenanceRecordDBContext())
+                {
+                    MaintenanceRecordViewModel viewModel = new MaintenanceRecordViewModel();
+                    viewModel.MaintenanceRecordsList = dbCheck.MaintenanceRecords.ToList();
+                    viewModel.NewMaintenanceRecord = dbCheck.MaintenanceRecords.Where(x => x.MaintenanceActionId == id).FirstOrDefault();
+
+                    // Instantiate object from view model
+                    if (viewModel.NewMaintenanceRecord == null)
+                    {
+                        MaintenanceActionVm.NewMaintenanceAction = new MaintenanceAction();
+                        // Get primary key from route data
+                        MaintenanceActionVm.NewMaintenanceAction.MaintenanceActionId = Guid.Parse(RouteData.Values["id"].ToString());
+                        // Mark record as modified
+                        db.Entry(MaintenanceActionVm.NewMaintenanceAction).State = EntityState.Deleted;
+                        // Persist changes
+                        db.SaveChanges();
+                        TempData["ResultMessage"] = "Delete Successful";
+                    }
+                    else
+                    {
+                        TempData["ResultMessage"] = "Delete Failed (Is the record being referenced in another table?)";
+                    }
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
         // Get action for edit page
         public IActionResult Edit(Guid id)
         {

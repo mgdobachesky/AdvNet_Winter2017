@@ -40,6 +40,49 @@ namespace SE407_Dobachesky.Controllers
             return RedirectToAction("Index");
         }
 
+        // Delete action
+        [HttpGet]
+        public IActionResult Delete(Guid id)
+        {
+            InspectorViewModel InspectorVm = new InspectorViewModel();
+            using (InspectorDBContext db = new InspectorDBContext())
+            {
+                using (var dbCheck1 = new InspectionDBContext())
+                {
+                    using (var dbCheck2 = new MaintenanceRecordDBContext())
+                    {
+                        InspectionViewModel viewModel1 = new InspectionViewModel();
+                        MaintenanceRecordViewModel viewModel2 = new MaintenanceRecordViewModel();
+
+                        viewModel1.InspectionsList = dbCheck1.Inspections.ToList();
+                        viewModel2.MaintenanceRecordsList = dbCheck2.MaintenanceRecords.ToList();
+
+                        viewModel1.NewInspection = dbCheck1.Inspections.Where(x => x.InspectorId == id).FirstOrDefault();
+                        viewModel2.NewMaintenanceRecord = dbCheck2.MaintenanceRecords.Where(x => x.InspectorId == id).FirstOrDefault();
+
+                        // Instantiate object from view model
+                        if (viewModel1.NewInspection == null && viewModel2.NewMaintenanceRecord == null)
+                        {
+                            InspectorVm.NewInspector = new Inspector();
+                            // Get primary key from route data
+                            InspectorVm.NewInspector.InspectorId = Guid.Parse(RouteData.Values["id"].ToString());
+                            // Mark record as modified
+                            db.Entry(InspectorVm.NewInspector).State = EntityState.Deleted;
+                            // Persist changes
+                            db.SaveChanges();
+                            TempData["ResultMessage"] = "Delete Successful";
+                        }
+                        else
+                        {
+                            TempData["ResultMessage"] = "Delete Failed (Is the record being referenced in another table?)";
+                        }
+                    }       
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
         // Get action for edit page
         public IActionResult Edit(Guid id)
         {

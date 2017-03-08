@@ -2,7 +2,10 @@
 @*
     For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@{
+@if (TempData["ResultMessage"] != null)
+{
+    <p class="alert alert-success" id="successMessage">@TempData["ResultMessage"]</p>
+    <br />
 }
 <div class="container-fluid">
     <div class="row">
@@ -39,6 +42,7 @@
                                 <td>@ConstructionDesign.ConstructionDesignId</td>
                                 <td>@ConstructionDesign.ConstructionDesignType</td>
                                 <td><a asp-action="Edit" asp-route-id="@ConstructionDesign.ConstructionDesignId">Edit</a></td>
+                                <td><a asp-action="Delete" asp-route-id="@ConstructionDesign.ConstructionDesignId" onclick='return confirm("Delete Record?");'>Delete</a></td>
                             </tr>
                         }
                     </tbody>

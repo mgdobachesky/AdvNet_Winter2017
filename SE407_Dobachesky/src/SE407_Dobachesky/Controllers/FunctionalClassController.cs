@@ -40,6 +40,41 @@ namespace SE407_Dobachesky.Controllers
             return RedirectToAction("Index");
         }
 
+        // Delete action
+        [HttpGet]
+        public IActionResult Delete(Guid id)
+        {
+            FunctionalClassViewModel FunctionalClassVm = new FunctionalClassViewModel();
+            using (FunctionalClassDBContext db = new FunctionalClassDBContext())
+            {
+                using (var dbCheck = new BridgeDBContext())
+                {
+                    BridgeViewModel viewModel = new BridgeViewModel();
+                    viewModel.BridgesList = dbCheck.Bridges.ToList();
+                    viewModel.NewBridge = dbCheck.Bridges.Where(x => x.FunctionalClassId == id).FirstOrDefault();
+
+                    // Instantiate object from view model
+                    if (viewModel.NewBridge == null)
+                    {
+                        FunctionalClassVm.NewFunctionalClass = new FunctionalClass();
+                        // Get primary key from route data
+                        FunctionalClassVm.NewFunctionalClass.FunctionalClassId = Guid.Parse(RouteData.Values["id"].ToString());
+                        // Mark record as modified
+                        db.Entry(FunctionalClassVm.NewFunctionalClass).State = EntityState.Deleted;
+                        // Persist changes
+                        db.SaveChanges();
+                        TempData["ResultMessage"] = "Delete Successful";
+                    }
+                    else
+                    {
+                        TempData["ResultMessage"] = "Delete Failed (Is the record being referenced in another table?)";
+                    }
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
         // Get action for edit page
         public IActionResult Edit(Guid id)
         {

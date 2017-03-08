@@ -40,6 +40,41 @@ namespace SE407_Dobachesky.Controllers
             return RedirectToAction("Index");
         }
 
+        // Delete action
+        [HttpGet]
+        public IActionResult Delete(Guid id)
+        {
+            CountyViewModel CountyVm = new CountyViewModel();
+            using (CountyDBContext db = new CountyDBContext())
+            {
+                using (var dbCheck = new BridgeDBContext())
+                {
+                    BridgeViewModel viewModel = new BridgeViewModel();
+                    viewModel.BridgesList = dbCheck.Bridges.ToList();
+                    viewModel.NewBridge = dbCheck.Bridges.Where(x => x.CountyId == id).FirstOrDefault();
+
+                    // Instantiate object from view model
+                    if (viewModel.NewBridge == null)
+                    {
+                        CountyVm.NewCounty = new County();
+                        // Get primary key from route data
+                        CountyVm.NewCounty.CountyId = Guid.Parse(RouteData.Values["id"].ToString());
+                        // Mark record as modified
+                        db.Entry(CountyVm.NewCounty).State = EntityState.Deleted;
+                        // Persist changes
+                        db.SaveChanges();
+                        TempData["ResultMessage"] = "Delete Successful";
+                    }
+                    else
+                    {
+                        TempData["ResultMessage"] = "Delete Failed (Is the record being referenced in another table?)";
+                    }
+                }
+            }
+
+            return RedirectToAction("Index");
+        }
+
         // Get action for edit page
         public IActionResult Edit(Guid id)
         {
